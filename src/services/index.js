@@ -8,7 +8,6 @@ async function getPrice(coin) {
             "Content-Type": "application/json"
         }
     }   );
-console.log(data);
     if (!data[coin]) {
       return "❌ Invalid coin name. Example: /price bitcoin";
     }

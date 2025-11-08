@@ -1,14 +1,14 @@
-import { getPrice } from "../../services/index.js";
-async function price(ctx) {
+import { getBinancePrice } from "../../services/getBinancePrice/index.js";
+async function binancePrice(ctx) {
   const text = ctx.message.text.split(" ");
   if (text.length < 2) {
     return ctx.reply("⚠️ Usage: /price bitcoin");
   }
 
-  const coin = text[1].toLowerCase();
-//   console.log(coin);
+  const coin = text[1].toUpperCase();
+ console.log(coin);
   try {
-    let price = await getPrice(coin);
+    let price = await getBinancePrice(coin);
     ctx.reply(`💰 ${coin.toUpperCase()} price is $${price}`);
   } catch (err) {
     console.error("Network error:", err.message);
@@ -16,4 +16,4 @@ async function price(ctx) {
   }
 }
 
-export { price };
+export { binancePrice };
