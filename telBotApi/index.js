@@ -1,7 +1,5 @@
 import { Telegraf } from "telegraf";
 import dotenv from "dotenv";
-import { start } from "./src/commands/start/index.js";
-import { help } from "./src/commands/help/index.js";
 dotenv.config();
 // ⚠️ Replace with your own bot token from @BotFather
 const BOT_TOKEN = process.env.BOT_TOKEN;
@@ -13,8 +11,8 @@ if (!BOT_TOKEN) {
 
 const bot = new Telegraf(BOT_TOKEN);
 
-bot.start((ctx) => start(ctx));
-bot.help((ctx) => help(ctx));
+bot.start((ctx) => ctx.reply("👋 Welcome! Use /price <coin> to check crypto prices."));
+bot.help((ctx) => ctx.reply("💡 Commands:\n/start - Start bot\n/ping - Test bot\n/price <coin> - Get crypto price"));
 bot.command("ping", (ctx) => ctx.reply("🏓 Pong!"));
 
 // 💰 /price command using CoinGecko API (works in bash)
