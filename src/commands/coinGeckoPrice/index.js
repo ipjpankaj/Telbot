@@ -1,5 +1,5 @@
 import { getPrice } from "../../services/index.js";
-async function price(ctx) {
+async function coinGeckoPrice(ctx) {
   const text = ctx.message.text.split(" ");
   if (text.length < 2) {
     return ctx.reply("⚠️ Usage: /price bitcoin");
@@ -16,4 +16,4 @@ async function price(ctx) {
   }
 }
 
-export { price };
+export { coinGeckoPrice };
