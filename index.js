@@ -1,7 +1,8 @@
 import { Telegraf } from "telegraf";
-
+import dotenv from "dotenv";
+dotenv.config();
 // ⚠️ Replace with your own bot token from @BotFather
-const BOT_TOKEN = "8587749749:AAGGUm8eRgJDHa8OpvAqD5aSIIE5FzMO88A";
+const BOT_TOKEN = process.env.BOT_TOKEN;
 
 if (!BOT_TOKEN) {
   console.error("❌ Missing bot token!");
@@ -26,6 +27,8 @@ console.log(coin);
   try {
     const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coin}&vs_currencies=usd`);
     const data = await res.json();
+    console.log(data);
+    console.log(res);
 
     if (!data[coin]) {
       return ctx.reply("❌ Invalid coin name. Example: /price bitcoin");
